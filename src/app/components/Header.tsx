@@ -38,27 +38,50 @@ export function Header({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo + Brand */}
-            <Link to="/" className="flex items-center gap-3">
-              <img
-  src="/logo.png"
-  alt="Food Fun Friends Logo"
-  className="
-    h-24 w-24
-    sm:h-28 sm:w-28
-    md:h-32 md:w-32
-    object-contain
-  "
-/>
+            <Link to="/" className="flex items-center gap-3 max-w-[70%]">
+  <img
+    src="/logo.png"
+    alt="Food Fun Friends Logo"
+    className="
+      h-24 w-24
+      sm:h-28 sm:w-28
+      md:h-32 md:w-32
+      object-contain
+      flex-shrink-0
+    "
+  />
 
-              <div className="flex flex-col leading-tight">
-                <span className="text-[var(--maroon)] tracking-wide font-semibold text-sm sm:text-base">
-                  Food Fun Friends
-                </span>
-                <span className="text-xs text-[var(--charcoal)] opacity-70">
-                  Caterers & Homedelivery
-                </span>
-              </div>
-            </Link>
+  <div className="flex flex-col leading-tight">
+    <span
+      className="
+        text-[var(--maroon)]
+        tracking-wide
+        font-semibold
+        text-sm
+        sm:text-base
+        md:text-base
+        leading-snug
+        sm:leading-tight
+      "
+    >
+      Food Fun Friends
+    </span>
+
+    <span
+      className="
+        text-[var(--charcoal)]
+        opacity-70
+        text-[10px]
+        sm:text-xs
+        md:text-xs
+        leading-snug
+      "
+    >
+      Caterers & Homedelivery
+    </span>
+  </div>
+</Link>
+
 
             {/* Desktop Nav */}
             <nav className="hidden md:flex items-center gap-8">
