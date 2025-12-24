@@ -28,7 +28,6 @@ export function Header({
 
   return (
     <>
-      {/* FIXED HEADER */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
@@ -38,14 +37,27 @@ export function Header({
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
-            {/* Logo */}
-            <Link to="/" className="flex flex-col leading-tight">
-              <span className="text-[var(--maroon)] tracking-wide">
-                Food Fun Friends
-              </span>
-              <span className="text-xs text-[var(--charcoal)] opacity-70">
-                Caterers & Homedelivery
-              </span>
+            {/* Logo + Brand */}
+            <Link to="/" className="flex items-center gap-3">
+              <img
+  src="/logo.png"
+  alt="Food Fun Friends Logo"
+  className="
+    h-24 w-24
+    sm:h-28 sm:w-28
+    md:h-32 md:w-32
+    object-contain
+  "
+/>
+
+              <div className="flex flex-col leading-tight">
+                <span className="text-[var(--maroon)] tracking-wide font-semibold text-sm sm:text-base">
+                  Food Fun Friends
+                </span>
+                <span className="text-xs text-[var(--charcoal)] opacity-70">
+                  Caterers & Homedelivery
+                </span>
+              </div>
             </Link>
 
             {/* Desktop Nav */}
@@ -90,7 +102,6 @@ export function Header({
 
             {/* Actions */}
             <div className="flex items-center gap-3">
-              {/* Favorites */}
               <Link
                 to="/favorites"
                 className="relative p-2 hover:bg-gray-100 rounded-full transition-colors"
@@ -104,7 +115,6 @@ export function Header({
                 )}
               </Link>
 
-              {/* Cart */}
               <button
                 onClick={onCartOpen}
                 className="relative p-2 hover:bg-gray-100 rounded-full transition-colors"
@@ -118,7 +128,6 @@ export function Header({
                 )}
               </button>
 
-              {/* WhatsApp Desktop */}
               <Button
                 onClick={() =>
                   window.open(`https://wa.me/${whatsappNumber}`, "_blank")
@@ -128,7 +137,6 @@ export function Header({
                 Order on WhatsApp
               </Button>
 
-              {/* Mobile Menu */}
               <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
                 <SheetTrigger asChild>
                   <button
@@ -139,42 +147,70 @@ export function Header({
                   </button>
                 </SheetTrigger>
 
-                <SheetContent side="right">
-                  <div className="flex flex-col gap-6 mt-8">
-                    <NavLink to="/" onClick={() => setMobileMenuOpen(false)}>
-                      Home
-                    </NavLink>
-                    <NavLink to="/menu" onClick={() => setMobileMenuOpen(false)}>
-                      Menu
-                    </NavLink>
-                    <NavLink
-                      to="/favorites"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Favourites
-                    </NavLink>
+                <SheetContent side="right" className="p-0">
+  {/* Sidebar Header */}
+  <div className="flex items-center gap-3 px-6 py-4 border-b">
+    <img
+      src="/logo.png"
+      alt="Food Fun Friends Logo"
+      className="h-14 w-14 object-contain"
+    />
+    <div className="flex flex-col leading-tight">
+      <span className="font-semibold text-[var(--maroon)] text-sm">
+        Food Fun Friends
+      </span>
+      <span className="text-xs text-gray-500">
+        Caterers & Homedelivery
+      </span>
+    </div>
+  </div>
 
-                    <Button
-                      onClick={() => {
-                        window.open(
-                          `https://wa.me/${whatsappNumber}`,
-                          "_blank"
-                        );
-                        setMobileMenuOpen(false);
-                      }}
-                      className="bg-[var(--maroon)] text-white w-full"
-                    >
-                      Order on WhatsApp
-                    </Button>
-                  </div>
-                </SheetContent>
+  {/* Navigation */}
+  <nav className="flex flex-col px-6 py-6 gap-4 text-sm">
+    <NavLink
+      to="/"
+      onClick={() => setMobileMenuOpen(false)}
+      className="py-2 border-b"
+    >
+      Home
+    </NavLink>
+
+    <NavLink
+      to="/menu"
+      onClick={() => setMobileMenuOpen(false)}
+      className="py-2 border-b"
+    >
+      Menu
+    </NavLink>
+
+    <NavLink
+      to="/favorites"
+      onClick={() => setMobileMenuOpen(false)}
+      className="py-2"
+    >
+      Favourites
+    </NavLink>
+  </nav>
+
+  {/* Bottom CTA */}
+  <div className="mt-auto px-6 py-6 border-t">
+    <Button
+      onClick={() => {
+        window.open(`https://wa.me/${whatsappNumber}`, "_blank");
+        setMobileMenuOpen(false);
+      }}
+      className="w-full bg-[var(--maroon)] text-white h-11"
+    >
+      Order on WhatsApp
+    </Button>
+  </div>
+</SheetContent>
+
               </Sheet>
             </div>
           </div>
         </div>
       </header>
-
-     
     </>
   );
 }

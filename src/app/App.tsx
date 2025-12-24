@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { Cart } from "./components/Cart";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
@@ -23,6 +23,11 @@ export default function App() {
 
   const { favorites, toggleFavorite, isFavorite } = useFavorites();
 
+  const location = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   return (
     <div className="min-h-screen bg-[var(--cream)]">

@@ -57,10 +57,9 @@ const MenuPage: React.FC<MenuPageProps> = ({
 
   return (
     <div className="min-h-screen bg-[var(--cream)] pt-16 md:pt-20">
-      {/* 🔍 Sticky Search + Categories (All Devices) */}
+      {/* 🔍 Sticky Search Bar ONLY */}
       <div className="sticky top-16 md:top-20 z-40 bg-[var(--cream)] border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          {/* Search Bar */}
           <div className="flex justify-center">
             <input
               type="text"
@@ -84,11 +83,14 @@ const MenuPage: React.FC<MenuPageProps> = ({
               "
             />
           </div>
+        </div>
+      </div>
 
-          {/* Categories */}
+      {/* 📦 Categories (NORMAL SCROLL) */}
+      <section className="pt-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             className="
-              mt-4
               grid
               grid-cols-2
               sm:grid-cols-3
@@ -120,29 +122,12 @@ const MenuPage: React.FC<MenuPageProps> = ({
                     gap-2
                   "
                 >
-                  <div
-                    className="
-                      w-5 h-5
-                      flex items-center justify-center
-                      bg-[var(--cream)]
-                      group-hover:bg-white
-                      rounded-full
-                      transition-colors
-                    "
-                  >
+                  <div className="w-5 h-5 flex items-center justify-center bg-[var(--cream)] group-hover:bg-white rounded-full transition-colors">
                     {Icon && (
                       <Icon className="w-4 h-4 text-[var(--maroon)]" />
                     )}
                   </div>
-                  <span
-                    className="
-                      text-[11px] sm:text-xs
-                      text-[var(--charcoal)]
-                      group-hover:text-white
-                      transition-colors
-                      whitespace-nowrap
-                    "
-                  >
+                  <span className="text-[11px] sm:text-xs text-[var(--charcoal)] group-hover:text-white whitespace-nowrap">
                     {category.name}
                   </span>
                 </button>
@@ -150,7 +135,7 @@ const MenuPage: React.FC<MenuPageProps> = ({
             })}
           </div>
         </div>
-      </div>
+      </section>
 
       {/* 🧾 Menu Content */}
       <section className="py-12">
@@ -214,10 +199,10 @@ const MenuPage: React.FC<MenuPageProps> = ({
                       <FoodCard
                         key={item.id}
                         item={item}
+                        index={index}
                         onAddToCart={addToCart}
                         onToggleFavorite={toggleFavorite}
                         isFavorite={isFavorite(item.id)}
-                        index={index}
                       />
                     ))}
                 </div>
